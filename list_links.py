@@ -8,6 +8,8 @@ import sys
 def find_links(subreddit):
     links = {}
     for mod in api.list_moderators(subreddit):
+        if mod == "AutoModerator":
+            continue
         for sub in api.list_modded_subreddits(mod):
             if not sub in links:
                 links[sub] = 0
